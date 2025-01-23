@@ -12,18 +12,18 @@ window.onscroll = () =>{
 };
 
 function validate(){
-    const name=document.getElementById("name").value;
-    const email=document.getElementById("email").value;
-    const number=document.getElementById("number").value;
-    const message=document.getElementById("message").value;
+    const name=document.getElementById("name").value.trim();
+    const email=document.getElementById("email").value.trim();
+    const number=document.getElementById("number").value.trim();
+    const message=document.getElementById("message").value.trim();
 
     if(!name){
         alert("Must have a name");
         
         return false;
     }
-
-    if(!email){
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if(!emailPattern.test(email)){
         alert("Must have a email");
         
         return false;
@@ -33,6 +33,12 @@ function validate(){
        
         return false;
     } 
+    const phonePattern = /^[0-9]{10}$/;
+    if (!phonePattern.test(number)) {
+        alert("Please enter a valid 10-digit phone number.");
+        return false;
+    }
+
     if(!message){
         alert("Must have a message");
        
